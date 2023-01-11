@@ -1,0 +1,6 @@
+[submodule "lib/arduinoFFT"]
+	path = lib/arduinoFFT
+	url = https://github.com/kosme/arduinoFFT.git
+[submodule "lib/MD_MAX72XX"]
+	path = lib/MD_MAX72XX
+	url = https://github.com/MajicDesigns/MD_MAX72XX.git
