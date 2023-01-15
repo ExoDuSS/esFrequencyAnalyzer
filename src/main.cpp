@@ -7,14 +7,14 @@
 #include "display.h"
 #include "FFT.h"
 
-arduinoFFT *FFT;
-MD_MAX72XX *MX_Display;
+arduinoFFT* FFT;
+MD_MAX72XX* MX_Display;
 
 int currentDisplayMode;
 
-double *vecReal;
-double *vecImag;
-char *vecLastPeaks;
+double* vecReal;
+double* vecImag;
+char* vecLastPeaks;
 
 void setup()
 {
@@ -27,10 +27,10 @@ void setup()
   MX_Display = new MD_MAX72XX(HARDWARE_TYPE, CS_PIN, DOTMATRIX_MAX_DEVICES);
   currentDisplayMode = 1; // 1 -5
 
-  vecReal = new double[SAMPLES]{0.f};
-  vecImag = new double[SAMPLES]{0.f};
+  vecReal = new double[SAMPLES] {0.f};
+  vecImag = new double[SAMPLES] {0.f};
 
-  vecLastPeaks = new char[DOTMATRIX_WIDTH]{0};
+  vecLastPeaks = new char[DOTMATRIX_WIDTH] {0};
 
   MX_Display->begin();
   delay(50); // wait for reference voltage to stabilize

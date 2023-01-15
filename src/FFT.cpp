@@ -1,6 +1,6 @@
 #include "FFT.h"
 
-void sampleAudioSignal(double *aVecReal, double *aVecIamg)
+void sampleAudioSignal(double* aVecReal, double* aVecIamg)
 {
   for (size_t i = 0; i < SAMPLES; i++)
   {
@@ -16,7 +16,7 @@ void sampleAudioSignal(double *aVecReal, double *aVecIamg)
   }
 }
 
-void sampleMockSignal(double *aVecReal, double *aVecImag)
+void sampleMockSignal(double* aVecReal, double* aVecImag)
 {
   int randomStart = rand();
   for (size_t i = 0; i < SAMPLES; i++)
@@ -26,7 +26,7 @@ void sampleMockSignal(double *aVecReal, double *aVecImag)
   }
 }
 
-void PerformFFT(arduinoFFT* aFFT, double *aVecReal, double *aVecImag)
+void PerformFFT(arduinoFFT* aFFT, double* aVecReal, double* aVecImag)
 {
   aFFT->Windowing(aVecReal, SAMPLES, FFT_WIN_TYP_HAMMING, FFT_FORWARD);
   aFFT->Compute(aVecReal, aVecImag, SAMPLES, FFT_FORWARD);

@@ -29,13 +29,13 @@ uint8_t GetDisplayValue(int aDisplayMode, int aIndex)
     return bitMask;
 }
 
-char *MapToDisplaySize(double *aVecReal)
+char* MapToDisplaySize(double* aVecReal)
 {
     size_t stepSize = SAMPLES_HALF / DOTMATRIX_WIDTH;
     size_t step = 0;
     size_t sample_offset = 0;
 
-    char *frequencyBucket = new char[DOTMATRIX_WIDTH]{0};
+    char* frequencyBucket = new char[DOTMATRIX_WIDTH] {0};
 
     for (size_t i = 0; i < DOTMATRIX_WIDTH; i++)
     {
@@ -46,15 +46,15 @@ char *MapToDisplaySize(double *aVecReal)
         }
         sample_offset += step + 1;
 
-        frequencyBucket[i] = value / step; // save as average over add ed values
+        frequencyBucket[i] = value / step; // save as average over added values
     }
     return frequencyBucket;
 }
 
-void DisplayFFT(MD_MAX72XX *aDisplay, int aDisplayMode, char *aPeaks, char *aData)
+void DisplayFFT(MD_MAX72XX* aDisplay, int aDisplayMode, char* aPeaks, char* aData)
 {
     int valueY = 0;
-    for (size_t i = 0; i < DOTMATRIX_WIDTH; i++)
+    for (size_t i = 0; i <= DOTMATRIX_WIDTH; i++)
     {
         aData[i] = constrain(aData[i], 0, 80);                // calmap between 0 - 80
         aData[i] = map(aData[i], 0, 80, 0, DOTMATRIX_HEIGHT); // map to display height
@@ -67,6 +67,6 @@ void DisplayFFT(MD_MAX72XX *aDisplay, int aDisplayMode, char *aPeaks, char *aDat
 
         valueY = aPeaks[i];
 
-        aDisplay->setColumn(DOTMATRIX_WIDTH - i, GetDisplayValue(aDisplayMode,valueY));
+        aDisplay->setColumn(DOTMATRIX_WIDTH - i, GetDisplayValue(aDisplayMode, valueY));
     }
 }
